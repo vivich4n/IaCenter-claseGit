@@ -11,6 +11,12 @@ def get_user(db: Session, user_id: int):
         .__dict__
     )
 
+def get_user_by_id(db: Session, user_id: int):
+    return (
+        db.query(models.Mock_Data)
+        .filter(models.Mock_Data.id == user_id)
+        .first()
+    )
 
 def get_all_users(db: Session):
     return db.query(models.Mock_Data).all()

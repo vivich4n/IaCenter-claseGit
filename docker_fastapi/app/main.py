@@ -29,7 +29,7 @@ async def myName(name: str):
 
 @app.post("/users/create", response_model=schemas.UserCreate)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
-    db_user = crud.get_user(db, user.id)
+    db_user = crud.get_user_by_id(db, user.id)
     if db_user:
         raise HTTPException(status_code=400, detail="User already registered")
     return crud.create_user(db=db, user=user)
