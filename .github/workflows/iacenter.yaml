@@ -21,7 +21,7 @@ jobs:
       - name: Build and push fast api
         uses: docker/build-push-action@v3
         with:
-          file: /docker_fastapi/Dockerfile
+          file: docker_fastapi/Dockerfile
           context: .
           push: true
           tags: vivianachan/ia-center-fast-api:fastapi-${{ github.sha }}
@@ -29,7 +29,7 @@ jobs:
       - name: Build and push mysql
         uses: docker/build-push-action@v3
         with:
-          file: /docker_mysql/Dockerfile
+          file: docker_mysql/Dockerfile
           context: .
           push: true
           tags: vivianachan/ia-center-mysql:mysql-${{ github.sha }}
