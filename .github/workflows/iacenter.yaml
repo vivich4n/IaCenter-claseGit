@@ -18,6 +18,14 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Build and push mysql
+        uses: docker/build-push-action@v3
+        with:
+          file: docker_mysql/Dockerfile
+          context: .
+          push: true
+          tags: vivianachan/ia-center-mysql:mysql-${{ github.sha }}
+          
       - name: Build and push fast api
         uses: docker/build-push-action@v3
         with:
@@ -26,10 +34,3 @@ jobs:
           push: true
           tags: vivianachan/ia-center-fast-api:fastapi-${{ github.sha }}
 
-      - name: Build and push mysql
-        uses: docker/build-push-action@v3
-        with:
-          file: docker_mysql/Dockerfile
-          context: .
-          push: true
-          tags: vivianachan/ia-center-mysql:mysql-${{ github.sha }}
