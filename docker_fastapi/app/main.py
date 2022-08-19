@@ -21,10 +21,15 @@ def get_db():
 async def root():
     return {"message": "Hello World this is my new API!"}
 
+# my_name function return a text with paramaters
+@app.get("/{name}")
+async def my_name(name: str):
+    return f"Hello {name} this is my new API!. I'm Viviana "
 
-@app.get("/myname/{name}")
-async def myName(name: str):
-    return {"message": f"Hello {name} this is my new API!"}
+# viviana function return a dictionary wihtout parameters
+@app.get("/viviana")
+async def viviana():
+    return {"message": f"Hello this is my new API!. I'm Viviana "}
 
 
 @app.post("/users/create", response_model=schemas.UserCreate)
